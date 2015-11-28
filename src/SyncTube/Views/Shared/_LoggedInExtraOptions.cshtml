@@ -1,0 +1,7 @@
+@using System.Security.Claims
+
+@if (User.Identity.IsAuthenticated)
+{
+	<li><a asp-controller="Lobby" asp-action="Index"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <strong>Lobby</strong></a></li>
+	<li><a asp-controller="Lobby" asp-action="New"><span class="glyphicon glyphicon-film" aria-hidden="true"></span> <strong>Create new room</strong></a></li>
+}

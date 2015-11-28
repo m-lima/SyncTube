@@ -1,0 +1,84 @@
+@model SyncTube.ViewModels.Room.CreateRoomViewModel
+@{
+    ViewData["Title"] = "New room";
+}
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Create new room</h1>
+        <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+        <div class="well">
+            <form asp-action="create" asp-asp-controller="room">
+                <div class="form-group">
+                    <label for="youtubeUrl">Youtube video URL: </label>
+                    <input type="url" id="youtubeUrl" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-2 control-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VideoId" class="col-md-4 control-label"></label>
+                    <input asp-for="VideoId" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="VideoId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duration" class="col-md-4 control-label"></label>
+                    <input asp-for="Duration" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="createRoom" class="btn btn-danger">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        $(document).ready(function () {
+            $("#youtubeUrl").on("input", function (url) {
+                var durationRegex = /P((([0-9]*\.?[0-9]*)Y)?(([0-9]*\.?[0-9]*)M)?(([0-9]*\.?[0-9]*)W)?(([0-9]*\.?[0-9]*)D)?)?(T(([0-9]*\.?[0-9]*)H)?(([0-9]*\.?[0-9]*)M)?(([0-9]*\.?[0-9]*)S)?)?/;
+
+                function secondsFromIsoDuration(duration) {
+                    var matches = duration.match(durationRegex);
+
+                    return (parseFloat(matches[11]) || 0) * 3600 + (parseFloat(matches[14]) || 0) * 60 + (parseFloat(matches[16]) || 0);
+                }
+
+
+                var ytApiKey = 'AIzaSyD8TVWZi6JDsupCUuicA4id38k5uVfHrak';
+                var regexp = /youtu(?:\.be|be\.com)\/(?:.*v(?:\/|=)|(?:.*\/)?)([a-zA-Z0-9-_]+)/g;
+                var match = regexp.exec(this.value);
+                if (match !== null) {
+                    var id = match[1];
+                    $("#VideoId").val(id);
+
+                    $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + id + '&key=' + ytApiKey + '&part=snippet&callback=?', function (data) {
+                        if (typeof (data.items[0]) != "undefined") {
+                            $("#Name").val(data.items[0].snippet.title);
+                            $("#Description").val(data.items[0].snippet.description);
+                            $.getJSON('https://www.googleapis.com/youtube/v3/videos?id=' + id + '&key=' + ytApiKey + '&part=contentDetails&callback=?', function (details) {
+                                if (typeof (details.items[0]) != "undefined") {
+                                    $("#Duration").val(secondsFromIsoDuration(details.items[0].contentDetails.duration));
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+

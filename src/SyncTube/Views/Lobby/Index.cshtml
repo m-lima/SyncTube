@@ -1,0 +1,57 @@
+@model IEnumerable<Room>
+@{
+    ViewData["Title"] = "Lobby";
+}
+
+<h3>Hello, @Context.User.Identity.Name</h3>
+
+<p>Feel free to join any of these open rooms or create a new one.</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="row panel-body">
+                @foreach (var room in Model)
+                {
+                    <div class="col-sm-6 col-md-4" style="height: 321px">
+                        <div class="thumbnail" style="max-height: 306px">
+                            <div class="caption">
+                                <div id="wrapper">
+                                    <h3 class="two-liner" style="color: #d9534f; margin: 0; padding: 0;" id="title" data-toggle="tooltip" title="@room.Name">@room.Name</h3>
+                                </div>
+                                <hr/>
+                                <p class="two-liner" data-toggle="tooltip" title="@room.Description">
+                                    <b>@room.Description</b>
+                                </p>
+                                <p id="@(room.Id)view">Viewers: 0 </p>
+                                <span id="@room.Id" class="text-success glyphicon glyphicon-stop" style="color: #d9534f; float: right"></span><p id="@(room.Id)duration">Duration: @(room.Duration)s </p>
+                                <div id="@room.Id" class="progress" data-toggle="tooltip" title="0s elapsed">
+                                    <div id="@room.Id" class="progress-bar progress-bar-danger progress-bar-striped" active role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                    </div>
+                                </div>
+                                <p><a asp-action="show" asp-asp-controller="room" itemid="2" asp-route-id="@room.Id" class="btn btn-danger btn-block" role="button">Join room</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section signalRScripts {
+    <script src="~/lib/signalr/jquery.signalR.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/js/views/lobby/index/signalr.js"></script>
+}
+
+@section scripts {
+    <script type="text/javascript" language="javascript" src="~/lib/dotdotdot/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(function() {
+            $('.two-liner').each(function() {
+                $(this).dotdotdot();
+            });
+        });
+    </script>
+}

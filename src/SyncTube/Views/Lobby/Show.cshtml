@@ -1,0 +1,75 @@
+@model Room
+
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<h1>@Model.Name</h1>
+<p>@Model.Description</p>
+<form>
+    <input type="hidden" value="@Model.Id" id="roomId"/>
+</form>
+
+<div style="margin: 15px">
+    <div class="embed-responsive embed-responsive-16by9">
+        <div id="player"></div>
+    </div>
+</div>
+
+
+@section sidePanel {
+    <div class="panel-body" style="height: 100%;">
+        <div class="chat-window" id="chatWindow"></div>
+        <input type="text" class="form-control" id="message" onkeypress="return submitMessage(event)"/>
+        <div class="btn btn-danger btn-block" id="sendmessage">Send</div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript" src="~/js/views/lobby/show/youtube.js"></script>
+    <script type="text/javascript">
+        initYoutube('player', '@Model.VideoId');
+        var submitMessage = function(event) {};
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('resize', setWindowSize);
+
+        function resizeComponents(myHeight) {
+            document.getElementById("completeDocumentBody").style["height"] = (myHeight + "px");
+            myHeight = parseInt(myHeight) - 170;
+            document.getElementById("chatWindow").style["height"] = (myHeight + "px");
+        }
+
+        function setWindowSize() {
+            var myHeight = 100;
+
+            if (typeof (window.innerWidth) == 'number') {
+                myHeight = window.innerHeight;
+            } else {
+                if (document.documentElement && (document.documentElement.clientHeight)) {
+                    myHeight = document.documentElement.clientHeight;
+                } else {
+                    if (document.body && (document.body.clientHeight)) {
+                        myHeight = document.body.clientHeight;
+                    }
+                }
+            }
+
+            resizeComponents(myHeight);
+        }
+
+        document.getElementById("completeDocumentBody").style["overflow"] = ("hidden");
+        setWindowSize();
+
+        var mainContent = $('#centralMainPanel')[0];
+        mainContent.scrollTop = mainContent.scrollHeight;
+    </script>
+}
+
+@section signalRScripts {
+    <script src="~/lib/signalr/jquery.signalR.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript" src="~/js/views/lobby/show/stream.js"></script>
+    <script type="text/javascript" src="~/js/views/lobby/show/chat.js"></script>
+}

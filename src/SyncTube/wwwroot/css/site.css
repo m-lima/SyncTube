@@ -1,0 +1,56 @@
+﻿body {
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+/* Wrapping element */
+
+/* Set some basic padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+
+.carousel-caption { z-index: 10 !important; }
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+    .carousel-caption { z-index: 10 !important; }
+}
+
+.thumbnail-rounded {
+    border-radius: 50%;
+    height: 230px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    width: 230px;
+}
+
+.thumbnail-wrap { margin-top: 20px; }
+
+.thumbnail-rounded img {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.chat-window {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: auto;
+}
+
+.two-liner {
+    line-height: 1.1em;
+    max-height: 2.2em;
+    overflow: hidden;
+}

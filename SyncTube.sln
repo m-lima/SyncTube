@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{51B4D4AC-CED7-494E-BDFC-2AA03EC34295}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BECFC5FE-933A-4776-BBA8-E0D6547055E2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SyncTube", "src\SyncTube\SyncTube.xproj", "{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FEA2698-4B8B-45FB-B6DC-8B515F00ECE6} = {51B4D4AC-CED7-494E-BDFC-2AA03EC34295}
+	EndGlobalSection
+EndGlobal
