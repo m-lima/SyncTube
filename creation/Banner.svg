@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1280"
+   height="430"
+   id="svg3995"
+   version="1.1"
+   inkscape:version="0.48.4 r"
+   sodipodi:docname="Banner.svg"
+   inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\Logo\Banner.png"
+   inkscape:export-xdpi="100.10288"
+   inkscape:export-ydpi="100.10288">
+  <defs
+     id="defs3997">
+    <filter
+       id="filter3782"
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow">
+      <feFlood
+         id="feFlood3784"
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood" />
+      <feComposite
+         id="feComposite3786"
+         in2="SourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3788"
+         in="composite"
+         stdDeviation="5"
+         result="blur" />
+      <feOffset
+         id="feOffset3790"
+         dx="8"
+         dy="8"
+         result="offset" />
+      <feComposite
+         id="feComposite3792"
+         in2="offset"
+         in="SourceGraphic"
+         operator="over"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix3794" />
+      <feFlood
+         id="feFlood3796"
+         flood-opacity="0.5"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         in="fbSourceGraphic" />
+      <feComposite
+         id="feComposite3798"
+         in2="fbSourceGraphic"
+         in="flood"
+         operator="in"
+         result="composite1" />
+      <feGaussianBlur
+         id="feGaussianBlur3800"
+         in="composite"
+         stdDeviation="5"
+         result="blur" />
+      <feOffset
+         id="feOffset3802"
+         dx="8"
+         dy="8"
+         result="offset" />
+      <feComposite
+         id="feComposite3804"
+         in2="offset"
+         in="fbSourceGraphic"
+         operator="over"
+         result="composite2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffff00"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="598.90387"
+     inkscape:cy="280.11984"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3777"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4000">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-622.36218)">
+    <g
+       id="g3777"
+       style="filter:url(#filter3791)">
+      <path
+         style="fill:#ff0000;fill-opacity:1;stroke:none"
+         d="M 227.14286,-4.2857143 1287.1429,-2.8571429 1285.7143,440 455.71429,438.57143 c 0,0 114.66743,-119.27232 91.42857,-240 -23.23887,-120.727688 -320,-202.8571443 -320,-202.8571443 z"
+         id="path3008"
+         inkscape:connector-curvature="0"
+         transform="translate(0,622.36218)"
+         sodipodi:nodetypes="cccczc" />
+      <path
+         style="fill:#000000;fill-opacity:0.25098039;stroke:none"
+         d="M 38.385797,787.70221 600.03061,705.37478 905.08437,1069.0744 235.35323,1067.6628 z"
+         id="path3127"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <g
+         id="g3101"
+         style="filter:url(#filter3115)">
+        <g
+           transform="translate(3.0304572,2.020304)"
+           id="g3772">
+          <rect
+             rx="25"
+             ry="25"
+             y="693.758"
+             x="169.70563"
+             height="94.95433"
+             width="433.35547"
+             id="rect3768"
+             style="fill:#ffffff;fill-opacity:1;stroke:none" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text4080"
+             y="764.70013"
+             x="241.22607"
+             style="font-size:76.69461823px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#c80000;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto"
+             xml:space="preserve"><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#c80000;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
+               y="764.70013"
+               x="241.22607"
+               id="tspan4082"
+               sodipodi:role="line">SyncTube</tspan></text>
+        </g>
+        <g
+           id="g4071"
+           transform="translate(-87.883271,-10.101527)">
+          <path
+             inkscape:export-ydpi="100.10288"
+             inkscape:export-xdpi="100.10288"
+             inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\SyncTube\Logo2.png"
+             transform="matrix(0.79686847,0,0,0.79686847,-23.256489,462.09185)"
+             d="m 411.13207,363.43814 c 0,64.71546 -52.46224,117.1777 -117.17769,117.1777 -64.71546,0 -117.1777,-52.46224 -117.1777,-117.1777 0,-64.71545 52.46224,-117.1777 117.1777,-117.1777 64.71545,0 117.17769,52.46225 117.17769,117.1777 z"
+             sodipodi:ry="117.1777"
+             sodipodi:rx="117.1777"
+             sodipodi:cy="363.43814"
+             sodipodi:cx="293.95438"
+             id="path3810"
+             style="fill:#ff0000;fill-opacity:1;stroke:none;display:inline"
+             sodipodi:type="arc" />
+          <path
+             inkscape:export-ydpi="100.10288"
+             inkscape:export-xdpi="100.10288"
+             inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\SyncTube\Logo2.png"
+             inkscape:connector-curvature="0"
+             id="path3810-4"
+             d="m 261.90467,718.94494 -102.69013,63.21017 49.21039,63.01407 c 0.88599,0.0251 1.76315,0.0454 2.65513,0.0454 45.02229,0 82.60409,-31.8765 91.4209,-74.28329 l -40.59629,-51.98618 z"
+             style="fill:#c80000;fill-opacity:1;stroke:none;display:inline" />
+          <path
+             inkscape:export-ydpi="100.10288"
+             inkscape:export-xdpi="100.10288"
+             inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\SyncTube\Logo2.png"
+             sodipodi:nodetypes="ssccssccss"
+             inkscape:connector-curvature="0"
+             id="path3810-0"
+             d="m 215.82545,658.81524 c -53.9206,0 -97.7409,43.7954 -97.7409,97.71599 0,26.9603 28.65022,69.07825 28.65022,69.07825 l 138.1689,-138.15647 c 0,0 -42.11793,-28.63777 -69.07822,-28.63777 z m 0,8.69085 c 24.6094,0 62.96963,26.05552 62.96963,26.05552 L 152.85582,819.50085 c 0,0 -26.05552,-38.36021 -26.05552,-62.96962 0,-49.21881 39.80634,-89.02514 89.02515,-89.02514 z"
+             style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#c80000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.91764641;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+          <path
+             inkscape:export-ydpi="100.10288"
+             inkscape:export-xdpi="100.10288"
+             inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\SyncTube\Logo2.png"
+             inkscape:connector-curvature="0"
+             id="path4019"
+             d="m 210.99794,653.98773 c -53.9206,0 -97.7409,43.7954 -97.7409,97.716 0,53.9206 43.8203,97.71603 97.7409,97.71603 53.9206,0 97.716,-43.79543 97.716,-97.71603 0,-53.9206 -43.7954,-97.716 -97.716,-97.716 z m 0,8.69085 c 49.21881,0 89.02515,39.80633 89.02515,89.02515 0,49.2188 -39.80634,89.02516 -89.02515,89.02516 -49.21881,0 -89.02515,-39.80636 -89.02515,-89.02516 0,-49.21882 39.80634,-89.02515 89.02515,-89.02515 z"
+             style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10.91764641;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+          <g
+             inkscape:export-ydpi="100.10288"
+             inkscape:export-xdpi="100.10288"
+             inkscape:export-filename="C:\Users\mflim_000\Dropbox\Creation\SyncTube\Logo2.png"
+             transform="matrix(0.48275064,0,0,0.48275064,27.751309,469.27564)"
+             id="g3812"
+             style="display:inline">
+            <rect
+               style="fill:#ffffff;fill-opacity:1;stroke:none"
+               id="rect3767"
+               width="230.8199"
+               height="160.36169"
+               x="264.15491"
+               y="504.8595"
+               rx="35.909893"
+               ry="44.496162" />
+            <path
+               style="fill:#d20000;fill-opacity:1;stroke:none"
+               inkscape:transform-center-x="-12.582001"
+               d="m 354.02201,615.87251 0,-64.5685 63.49645,31.84231 z"
+               id="path2996"
+               inkscape:connector-curvature="0"
+               sodipodi:nodetypes="cccc" />
+          </g>
+        </g>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:64px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter3782);font-family:Gill Sans Ultra Bold;-inkscape-font-specification:Gill Sans Ultra Bold"
+         x="626.29462"
+         y="929.1236"
+         id="text3778"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3780"
+           x="626.29462"
+           y="929.1236"
+           style="font-size:64px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;font-family:Roboto;-inkscape-font-specification:Roboto">The YouTube Sync´er</tspan></text>
+    </g>
+  </g>
+</svg>

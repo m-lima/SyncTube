@@ -54,3 +54,13 @@
     max-height: 2.2em;
     overflow: hidden;
 }
+
+.landing-banner {
+    background: url('../images/banner.png') no-repeat center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 430px;
+    border-radius: 3px;
+}
