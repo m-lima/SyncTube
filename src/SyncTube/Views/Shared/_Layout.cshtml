@@ -23,6 +23,12 @@
 <body id="completeDocumentBody">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div style="float: left; min-height: 50px; min-width: 50px;">
+                    <img src="../images/logo.png" style="margin-top: 9px" />
+                </div>
+            }
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
