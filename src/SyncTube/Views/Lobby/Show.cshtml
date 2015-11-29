@@ -10,7 +10,7 @@
     <input type="hidden" value="@Model.Id" id="roomId"/>
 </form>
 
-<div style="margin: 15px">
+<div id="playerDiv" style="margin: 15px">
     <div class="embed-responsive embed-responsive-16by9">
         <div id="player"></div>
     </div>
@@ -59,11 +59,17 @@
             resizeComponents(myHeight);
         }
 
+        function scrollToPlayer() {
+            var mainContent = $('#centralMainPanel');
+            var position = $('#playerDiv');
+            mainContent[0].scrollTop = 0;
+            mainContent.animate({scrollTop: position.offset().top - 50}, 1000);
+        }
+
         document.getElementById("completeDocumentBody").style["overflow"] = ("hidden");
         setWindowSize();
+        scrollToPlayer();
 
-        var mainContent = $('#centralMainPanel')[0];
-        mainContent.scrollTop = mainContent.scrollHeight;
     </script>
 }
 

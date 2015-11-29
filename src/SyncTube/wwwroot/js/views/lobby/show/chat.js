@@ -10,19 +10,22 @@ $(function () {
 		// Add the message to the page.
 		var chatWindow = $('.chat-window');
 		if (lastName != name) {
-			chatWindow.append('<span class="label label-warning"><strong>' + encodedName + '</strong>:</span><br>');
+		    chatWindow.append('<span class="label label-warning" style="opacity: 0.0;"><strong>' + encodedName + '</strong>:</span><br>');
+		    chatWindow.children("span").last().animate({ opacity: '1.0' }, "slow");
 		}
-		chatWindow.append(encodedMsg + '<br>');
+		chatWindow.append('<p style="opacity: 0.0;">' + encodedMsg + '</p>');
+		chatWindow.children("p").last().animate({ opacity: '1.0' }, "slow");
 		lastName = name;
-		chatWindow.scrollTop = chatWindow.scrollHeight;
+		chatWindow[0].scrollTop = chatWindow[0].scrollHeight;
 	};
 
 	chat.client.addChatMessage = function (message) {
 		var encodedMsg = $('<div />').text(message).html();
 		// Add the message to the page.
 		var chatWindow = $('.chat-window');
-		chatWindow.append('<i style="color: gray">' + encodedMsg + '</i><br>');
-		chatWindow.scrollTop = chatWindow.scrollHeight;
+		chatWindow.append('<i style="color: gray; opacity: 0.0;">' + encodedMsg + '</i><br>');
+		chatWindow.children("i").last().animate({ opacity: '1.0' }, "slow");
+		chatWindow[0].scrollTop = chatWindow[0].scrollHeight;
 	};
 
 	$('#message').focus();
