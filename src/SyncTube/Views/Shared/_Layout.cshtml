@@ -41,20 +41,34 @@
             </div>
         </div>
     </div>
-    <div class="row body-content" style="overflow: hidden; display: flex; height: 100%; width: 100%; margin: 0px; padding: 0px">
-        <div id="centralMainPanel" class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12" style="overflow-y: auto">
+    @if (IsSectionDefined("sidePanel"))
+    {
+        <div class="row body-content" style="overflow: hidden; display: flex; height: 100%; width: 100%; margin: 0px; padding: 0px">
+            <div id="centralMainPanel" class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12" style="overflow-y: auto">
 
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; 2015 - SyncTube</p>
+
+                </footer>
+            </div>
+            <div class="col-md-2 col-xs-6" style="margin: 0px; padding: 0px; overflow-y: auto">
+                @RenderSection("sidePanel", required: false)
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container body-content">
             @RenderBody()
             <hr />
             <footer>
                 <p>&copy; 2015 - SyncTube</p>
-
             </footer>
         </div>
-        <div class="col-md-2 col-xs-6" style="margin: 0px; padding: 0px; overflow-y: auto">
-            @RenderSection("sidePanel", required: false)
-        </div>
-    </div>
+
+    }
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
