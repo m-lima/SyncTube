@@ -13,8 +13,8 @@ $(function () {
 		    chatWindow.append('<span class="label label-warning" style="opacity: 0.0;"><strong>' + encodedName + '</strong>:</span><br>');
 		    chatWindow.children("span").last().animate({ opacity: '1.0' }, "slow");
 		}
-		chatWindow.append('<p style="opacity: 0.0;">' + encodedMsg + '</p>');
-		chatWindow.children("p").last().animate({ opacity: '1.0' }, "slow");
+		chatWindow.append('<span style="opacity: 0.0;">' + encodedMsg + '</span><br>');
+		chatWindow.children("span").last().animate({ opacity: '1.0' }, "slow");
 		lastName = name;
 		chatWindow[0].scrollTop = chatWindow[0].scrollHeight;
 	};
