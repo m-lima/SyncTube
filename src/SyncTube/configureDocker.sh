@@ -3,7 +3,6 @@
 if [ "$1" == "sql" ]
 then
     echo -e "\e[33m>> Checking SQLite3 presence..\e[m"
-#echo -e "\e[93mPlease specify target\e[0m"
     if grep -Fxq "deb http://ftp.us.debian.org/debian jessie main" /etc/apt/sources.list
     then
         echo -e "\e[32m>> Source already present\e[m"
@@ -16,15 +15,18 @@ then
 elif [ "$1" == "code" ]
 then
     echo -e "\e[33m>> Updating code for deployment..\e[m"
+
     sed -i 's~options => { options\.UseSqlite(\$"Data Source={_appEnv\.ApplicationBasePath}/data\.db"); });~options => { options\.UseSqlite(\$"Data Source=/data/data\.db"); });~' /app/Startup.cs
     sed -i 's~options\.Hubs\.EnableDetailedErrors = true;~options\.Hubs\.EnableDetailedErrors = false;~' /app/Startup.cs
+
     sed -i 's~"web": "Microsoft\.AspNet\.Server\.Kestrel",~"web": "Microsoft\.AspNet\.Server\.Kestrel --server\.urls http://marcelolima\.org",~' /app/project.json
+
     echo -e "\e[32m>> Updated!\e[m"
 elif [ "$1" == "push" ]
 then
     echo -e "\e[33m>> Pushing new files to server..\e[m"
 
-    if initctl list | grep syncTube > /dev/null
+    if initctl list | grep "syncTube start/running" > /dev/null
     then
         MANAGED="true"
         echo -e "\e[32m>> Instance running and managed by UpStart\e[m"
@@ -42,7 +44,7 @@ then
     elif [ "$RUNNING" == "false" ]
     then
         echo -e "\e[31m>> Container sync is not running.. Starting\e[m"
-        docker start sync
+        echo -e "\e[33m>> Requesting start: \e[m"$(docker start sync)
     fi
 
     echo -e "\e[33m>> Cleaning app folder in container..\e[m"
@@ -55,10 +57,12 @@ then
     if [ "$MANAGED" == "true" ]
     then
         echo -e "\e[33m>> Stopping container and letting UpStart take over..\e[m"
-        docker stop sync
+        echo -e "\e[33m>> Sending SIGINT: \e[m"$(docker kill --signal="SIGINT" sync)
+        echo -e "\e[33m>> Confirming stop: \e[m"$(docker stop sync)
     else
         echo -e "\e[33m>> Restarting container..\e[m"
-        docker restart sync
+        echo -e "\e[33m>> Sending SIGINT: \e[m"$(docker kill --signal="SIGINT" sync)
+        echo -e "\e[33m>> Requesting restart: \e[m"$(docker restart sync)
     fi
     echo -e "\e[32m>> Push complete\e[m"
 fi
