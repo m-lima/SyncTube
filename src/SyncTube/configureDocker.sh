@@ -24,6 +24,15 @@ elif [ "$1" == "push" ]
 then
     echo -e "\e[33m>> Pushing new files to server..\e[m"
 
+    if initctl list | grep syncTube > /dev/null
+    then
+        MANAGED="true"
+        echo -e "\e[32m>> Instance running and managed by UpStart\e[m"
+    else
+        MANAGED="false"
+        echo -e "\e[31m>> Instance not managed by UpStart!\e[m"
+    fi
+
     RUNNING=$(docker inspect --format="{{ .State.Running }}" sync 2> /dev/null)
 
     if [ $? -eq 1 ]
@@ -43,7 +52,7 @@ then
     docker cp . sync:/app
     cd - > /dev/null
     docker exec sync /app/configureDocker.sh code
-    if [ "$RUNNING" == "true" ]
+    if [ "$MANAGED" == "true" ]
     then
         echo -e "\e[33m>> Stopping container and letting UpStart take over..\e[m"
         docker stop sync
