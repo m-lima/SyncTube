@@ -9,6 +9,7 @@ namespace SyncTube.Logging
 
         private const string RED = "\u001b[31m";
         private const string YELLOW = "\u001b[33m";
+        private const string GREEN = "\u001b[32m";
         private const string BLUE = "\u001b[34m";
         private const string RESET = "\u001b[m";
 
@@ -29,8 +30,8 @@ namespace SyncTube.Logging
                         Console.Write(YELLOW);
                         break;
                     case LogLevel.Information:
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(BLUE);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(GREEN);
                         break;
                 }
                 Console.Write(logLevel + " : ");
