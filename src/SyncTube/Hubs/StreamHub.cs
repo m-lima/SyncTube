@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
+using Microsoft.Framework.Logging;
 using Newtonsoft.Json;
-using SyncTube.Hubs;
 
-namespace SignalRStream
+namespace SyncTube.Hubs
 {
     [Authorize]
     public class StreamHub : Hub
@@ -14,30 +14,36 @@ namespace SignalRStream
         private const string LobbyRoomName = "LOBBY_ROOM_FUN_TIMES!!";
         private static readonly Dictionary<string, VideoStatus> RoomStatuses = new Dictionary<string, VideoStatus>();
         private static Thread _roomLoopThread;
-        private static readonly List<string> Lobbiers = new List<string>();
+        private static readonly List<string> Lobbyers = new List<string>();
         private static Thread _loobyLoopThread;
 
+        private readonly ILogger _logger;
 
-//Thread methods
+        public StreamHub(ILoggerFactory loggerFactory)
+        {
+            _logger = loggerFactory.CreateLogger("StreamHub");
+        }
+
+        //Thread methods
         private void LobbyLoop()
         {
-            Console.WriteLine("Starting lobby thread");
+            _logger.LogInformation("Starting lobby thread");
 
             var statuses = new List<VideoStatusLightweight>(RoomStatuses.Count);
             do
             {
                 BroadcastLobbyStatus(statuses);
                 Thread.Sleep(2000);
-            } while (Lobbiers.Count > 0);
+            } while (Lobbyers.Count > 0);
 
-            Console.WriteLine("Stopping lobby thread");
+            _logger.LogInformation("Stopping lobby thread");
 
             _loobyLoopThread = null;
         }
 
         private void LoopRooms()
         {
-            Console.WriteLine("Starting rooms thread");
+            _logger.LogInformation("Starting rooms thread");
 
             int userCount;
             do
@@ -64,30 +70,39 @@ namespace SignalRStream
                 Thread.Sleep(2000);
             } while (userCount > 0);
 
-            Console.WriteLine("Stopping rooms thread");
+            _logger.LogInformation("Stopping rooms thread");
 
             _roomLoopThread = null;
         }
 
         // Room management
+        public override Task OnConnected()
+        {
+            _logger.LogVerbose(Context.User.Identity.Name + " has connected to StreamHub");
+            return base.OnConnected();
+        }
+
         public override Task OnDisconnected(bool stopCalled)
         {
             var keyCollection = RoomStatuses.Keys;
             var connectionId = Context.ConnectionId;
+            string userStatus = "Current user count:\n";
             foreach (var roomId in keyCollection)
             {
                 if (RoomStatuses[roomId].UserList.Remove(connectionId))
-                    Console.WriteLine("User leaving room " + roomId);
-                Console.WriteLine(RoomStatuses[roomId].UserList.Count + " users connected to room " + roomId);
+                    _logger.LogInformation(Context.User.Identity.Name + " is leaving stream room [" + roomId + ']');
+               userStatus += RoomStatuses[roomId].UserList.Count + " on room [" + roomId + "]\n";
             }
-            Lobbiers.Remove(connectionId);
+            _logger.LogInformation(userStatus);
+            Lobbyers.Remove(connectionId);
             return base.OnDisconnected(stopCalled);
         }
 
         public void JoinLobby()
         {
-            Lobbiers.Add(Context.ConnectionId);
+            Lobbyers.Add(Context.ConnectionId);
             Groups.Add(Context.ConnectionId, LobbyRoomName);
+            _logger.LogInformation(Context.User.Identity.Name + " has joined the lobby; " + Lobbyers.Count + " users in the lobby");
 
             if (_loobyLoopThread == null)
             {
@@ -110,7 +125,8 @@ namespace SignalRStream
             }
 
             RoomStatuses[roomId].UserList.Add(Context.ConnectionId);
-            Console.WriteLine(RoomStatuses[roomId].UserList.Count + " users connected to room " + roomId);
+            _logger.LogInformation(Context.User.Identity.Name + " has joined stream room [" + roomId + ']');
+            _logger.LogInformation(RoomStatuses[roomId].UserList.Count + " users connected to room [" + roomId + ']');
             Groups.Add(Context.ConnectionId, roomId);
         }
 

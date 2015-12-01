@@ -7,6 +7,7 @@ using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
+using SyncTube.Logging;
 using SyncTube.Models;
 using SyncTube.Services;
 
@@ -47,9 +48,6 @@ namespace SyncTube
                 .AddSqlite()
                 .AddDbContext<ApplicationDbContext>(
                     options => { options.UseSqlite($"Data Source={_appEnv.ApplicationBasePath}/data.db"); });
-            //                .AddSqlServer()
-            //                .AddDbContext<ApplicationDbContext>(options =>
-            //                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             // Add Identity services to the services container.
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -58,7 +56,12 @@ namespace SyncTube
 
             // Add MVC services to the services container.
             services.AddMvc();
-            
+//        config =>
+//        {
+//            config.Filters.Add(new GlobalFilter(loggerFactory));
+//            config.Filters.Add(new GlobalLoggingExceptionFilter(loggerFactory));
+//        });
+
             services.AddSignalR(options =>
             {
                 options.Hubs.EnableDetailedErrors = true;
@@ -71,14 +74,18 @@ namespace SyncTube
             // Register application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+//            services.AddTransient<SyncExceptionFilter>();
+//            services.AddTransient<SyncLogger>();
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Information;
-            loggerFactory.AddConsole();
-            loggerFactory.AddDebug();
+            loggerFactory.MinimumLevel = LogLevel.Debug;
+            loggerFactory.AddProvider(new SyncLogProvider());
+//            loggerFactory.AddConsole();
+//            loggerFactory.AddDebug();
 
             // Configure the HTTP request pipeline.
 
@@ -94,6 +101,7 @@ namespace SyncTube
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
                 app.UseExceptionHandler("/Home/Error");
+//                app.UseMiddleware<SyncExceptionMiddleware>();
             }
 
             // Add the platform handler to the request pipeline.
@@ -137,7 +145,7 @@ namespace SyncTube
                 // Uncomment the following line to add a route for porting Web API 2 controllers.
                 // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
-			
+
             app.UseSignalR();
         }
     }

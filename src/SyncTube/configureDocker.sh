@@ -18,8 +18,9 @@ then
 
     sed -i 's~options => { options\.UseSqlite(\$"Data Source={_appEnv\.ApplicationBasePath}/data\.db"); });~options => { options\.UseSqlite(\$"Data Source=/data/data\.db"); });~' /app/Startup.cs
     sed -i 's~options\.Hubs\.EnableDetailedErrors = true;~options\.Hubs\.EnableDetailedErrors = false;~' /app/Startup.cs
+	sed -i 's~loggerFactory\.MinimumLevel = LogLevel\..*;~loggerFactory\.MinimumLevel = LogLevel\.Information;~' /app/Startup.cs
 
-    sed -i 's~"web": "Microsoft\.AspNet\.Server\.Kestrel",~"web": "Microsoft\.AspNet\.Server\.Kestrel --server\.urls http://marcelolima\.org",~' /app/project.json
+    sed -i 's~"web": "Microsoft\.AspNet\.Server\.Kestrel.*",~"web": "Microsoft\.AspNet\.Server\.Kestrel --server\.urls http://marcelolima\.org",~' /app/project.json
 
     echo -e "\e[32m>> Updated!\e[m"
 elif [ "$1" == "push" ]
