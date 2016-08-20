@@ -22,5 +22,11 @@ namespace SyncTube.ViewModels.Room
         [Required]
         [Display(Name = "Duration:")]
         public int Duration { get; set; }
+
+        public static string getYoutubeToken()
+        {
+            //'AIzaSyDlBDPDftItpzMhlpcTQcD0HubOyOaanDA'; //'AIzaSyD8TVWZi6JDsupCUuicA4id38k5uVfHrak';
+            return "AIzaSyDlBDPDftItpzMhlpcTQcD0HubOyOaanDA";
+        }
     }
 }
