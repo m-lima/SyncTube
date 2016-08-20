@@ -57,8 +57,7 @@
                     return (parseFloat(matches[11]) || 0) * 3600 + (parseFloat(matches[14]) || 0) * 60 + (parseFloat(matches[16]) || 0);
                 }
 
-
-                var ytApiKey = @CreateRoomViewModel.getYoutubeToken();
+                var ytApiKey = 'AIzaSyDlBDPDftItpzMhlpcTQcD0HubOyOaanDA'; //'AIzaSyD8TVWZi6JDsupCUuicA4id38k5uVfHrak';
                 var regexp = /youtu(?:\.be|be\.com)\/(?:.*v(?:\/|=)|(?:.*\/)?)([a-zA-Z0-9-_]+)/g;
                 var match = regexp.exec(this.value);
                 if (match !== null) {
